@@ -106,8 +106,10 @@ void WorkWindow::on_SaveLampButton_clicked()
 }
 
 
-void WorkWindow::updateLampInfo(int n_,int m_){
+void WorkWindow::updateLampInfo(int n_,int m_) const
+{
     /* Метод, который устанавливает значения в редакторе лампы
+     * Входные параметры: позиция источника света в матрице
      */
     ui->LampInfo->setTitle("Информация о лампе c координатами("+
                            QString::number(n_+1)+","+
@@ -142,7 +144,7 @@ void WorkWindow::updateLampInfo(int n_,int m_){
     }
 }
 
-QString WorkWindow::getStyleStringForButton(LampType type)
+QString WorkWindow::getStyleStringForButton(LampType type) const
     /* Метод  возвращает строку с стилями для кнопки
      * Входные параметры: тип источника света
      */

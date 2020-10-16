@@ -29,8 +29,8 @@ private slots:
 private:
     QDynamicButton * currButton = nullptr;
     Ui::WorkWindow *ui;
-    void updateLampInfo(int m,int n);
-    QString getStyleStringForButton(LampType type);
+    void updateLampInfo(int m,int n) const;
+    QString getStyleStringForButton(LampType type) const;
 
 };
 

@@ -39,7 +39,7 @@ Lamp::Lamp(const Lamp& lamp)
 
 Lamp::~Lamp()
 {
-    /* Деконструктор класса
+    /* Деструктор класса
     */
 }
 
@@ -60,6 +60,7 @@ const float& Lamp::getIntensity() const
 void Lamp::setPower(float power_)
 {
     /* Метод, устанавливающий значение мощности лампы
+     * Входные параметры: мощность
     */
     if(power_ < Lamp::MIN_POWER)
         this->power = Lamp::MIN_POWER;
@@ -72,6 +73,7 @@ void Lamp::setPower(float power_)
 void Lamp::setIntensity(float intensity_)
 {
     /* Метод, устанавливающий значение интенсивности света лампы
+     * Входные параметры: интенсивность света
     */
     if(intensity_<Lamp::MIN_INTENSITY)
         this->intensity =Lamp::MIN_INTENSITY;

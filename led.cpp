@@ -43,7 +43,8 @@ Led::Led(const Led &led)
 
 Led::~Led()
 {
-
+    /*Деструктор
+     */
 }
 
 float Led::currIntensity(const Led & led) const
@@ -78,6 +79,7 @@ const float& Led::getBlue()const
 void Led::setBlue(float blue_)
 {
     /* Метод , устанавливающий значение интенсивности синего света
+     * Входные параметры: интенсивность синего света
      */
     if(blue_ < Led::MIN_COLOR_VALUE)
         this->blue = Led::MIN_COLOR_VALUE;
@@ -90,6 +92,7 @@ void Led::setBlue(float blue_)
 void Led::setGreen(float green_)
 {
     /* Метод , устанавливающий значение интенсивности зеленого света
+     * Входные параметры: интенсивность зеленого света
      */
     if(green_ < Led::MIN_COLOR_VALUE)
         this->green = Led::MIN_COLOR_VALUE;
@@ -102,6 +105,7 @@ void Led::setGreen(float green_)
 void Led::setRed(float red_)
 {
     /* Метод , устанавливающий значение интенсивности красного света
+     * Входные параметры: интенсивность красного света
      */
     if(red_ < Led::MIN_COLOR_VALUE)
         this->red = Led::MIN_COLOR_VALUE;
