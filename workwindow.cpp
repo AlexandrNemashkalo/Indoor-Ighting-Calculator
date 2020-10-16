@@ -37,14 +37,14 @@ WorkWindow::WorkWindow(QWidget *parent,Matrix  *m) :
             }
             if(matrix->getForUpdateLamp(i,j)->getType() ==0)
             {
-                button->setText("P="+ QString::number( matrix->getLamp(i,j)->getPower())+"\n"
-                             "I="+QString::number( matrix->getLamp(i,j)->getIntensity()));
+                button->setText(QString::number( matrix->getLamp(i,j)->getPower())+" Вт\n"
+                             +QString::number( matrix->getLamp(i,j)->getIntensity())+" кд");
             }
             else
             {
                 Led *led = dynamic_cast<Led* >(matrix->getForUpdateLamp(i,j));
-                button->setText("P="+ QString::number( matrix->getLamp(i,j)->getPower())+"\n"
-                                "I="+QString::number(led->currIntensity(*led)));
+                button->setText(QString::number( matrix->getLamp(i,j)->getPower())+" Вт\n"
+                                "I="+QString::number(led->currIntensity(*led))+" кд");
             }
 
             button->setStyleSheet(getStyleStringForButton(matrix->getForUpdateLamp(i,j)->getType()));
@@ -90,8 +90,8 @@ void WorkWindow::on_SaveLampButton_clicked()
        ui->CurrIntensity->setText(QString::number(resultIntensity)+" кд");
 
        currButton->setStyleSheet(getStyleStringForButton(LampType::led));
-       currButton->setText("P="+ QString::number(ui->PowerInput->value())+"\n"
-                       "I="+QString::number(resultIntensity));
+       currButton->setText(QString::number(ui->PowerInput->value())+" Вт\n"
+                       +QString::number(resultIntensity) +" кд");
     }
     else
     {
@@ -100,8 +100,8 @@ void WorkWindow::on_SaveLampButton_clicked()
        ui->CurrIntensity->setText("");
 
        currButton->setStyleSheet(getStyleStringForButton(LampType::lamp));
-       currButton->setText("P="+ QString::number(ui->PowerInput->value())+"\n"
-                       "I="+QString::number(ui->IntensityInput->value()));
+       currButton->setText(QString::number(ui->PowerInput->value())+" Вт\n"
+                       +QString::number(ui->IntensityInput->value()) +" кд");
     }
 }
 

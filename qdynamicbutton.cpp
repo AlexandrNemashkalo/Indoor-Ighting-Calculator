@@ -1,5 +1,5 @@
 #include "qdynamicbutton.h"
-
+#include "iostream"
 
 QDynamicButton::QDynamicButton(QWidget *parent,int n_,int m_) :
     QRadioButton(parent),
@@ -11,7 +11,6 @@ QDynamicButton::QDynamicButton(QWidget *parent,int n_,int m_) :
 
 QDynamicButton::~QDynamicButton()
 {
-
 }
 
 int QDynamicButton::getM() const
