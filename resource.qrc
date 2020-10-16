@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>img/lamp.png</file>
+        <file>img/lampActive.png</file>
+        <file>img/lad.png</file>
+        <file>img/ladActive.png</file>
+    </qresource>
+</RCC>
