@@ -7,3 +7,21 @@
 2. Матрица (двумерный массив источников света): список источников света, метод расчёта освещённости в произвольных координатах (x, y, z)
 3. Светодиодная лампа: мощность, максимальная сила света, интенсивность красного, зелёного и синего светодиода, метод расчёта текущей силы света пропорциональной  интенсивности красного, зелёного и синего светодиода)
 
+## Screenshots
+1. Main page
+
+![main page](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/master/screens/main.jpg)
+
+2.Рабочее окно
+
+![second](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/master/screens/workWindow.jpg)
+
+3. Вывод результата подсчета освещенности в определенной точке
+
+![item](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/master/screens/workWindow2.jpg)
+
+4. Пример вывода ошибки при неправильно веденных данных
+
+![basket](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/master/screens/error.jpg)
+
+
