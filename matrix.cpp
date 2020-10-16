@@ -38,109 +38,109 @@ Matrix::Matrix(const Matrix &M)
 Matrix::Matrix(const std::string & fileName)
 {
     /* Конструктор, который считывает данные из текстового файла и создает экземпляр класса
-        * Данные файла должны содержатся в следующем ввиде
-        * M[0][0].P  M[0][0].I (M[0][0].Red M[0][0].Green M[0][0].Blue)
-        * M[0][1].P  M[0][1].I
-        * ...
-        * M[0][m-1].P  M[0][m-1].I
-        * (пустая строка)
-        * M[1][0].P  M[1][0].I
-        * ...
-        * M[1][m-1].P  M[1][m-1].I
-        * (пустая cтрока)
-        * ...
-        * M[n-1][0].P  M[n-1][0].I
-        * ...
-        * M[n-1][m-1].P  M[n-1][m-1].I
-        *
-        * где n и m размерность матрицы, P - мощность, I - интенсивность света,
-        * если есть скобочки со значениями значит это светодиодная лампа, если нет - обычная
-        * Входные параметры:  абсолютный путь к файлу
-        */
-   std::ifstream file(fileName);
-   std::string buff;
-   int i = 0;
-   int j = 0;
-   matrix.resize(1);
+     * Данные файла должны содержатся в следующем ввиде
+     * M[0][0].P  M[0][0].I (M[0][0].Red M[0][0].Green M[0][0].Blue)
+     * M[0][1].P  M[0][1].I
+     * ...
+     * M[0][m-1].P  M[0][m-1].I
+     * (пустая строка)
+     * M[1][0].P  M[1][0].I
+     * ...
+     * M[1][m-1].P  M[1][m-1].I
+     * (пустая cтрока)
+     * ...
+     * M[n-1][0].P  M[n-1][0].I
+     * ...
+     * M[n-1][m-1].P  M[n-1][m-1].I
+     *
+     * где n и m размерность матрицы, P - мощность, I - интенсивность света,
+     * если есть скобочки со значениями значит это светодиодная лампа, если нет - обычная
+     * Входные параметры:  абсолютный путь к файлу
+     */
+    std::ifstream file(fileName);
+    std::string buff;
+    int i = 0;
+    int j = 0;
+    matrix.resize(1);
 
-   if (file.is_open())
-   {
-       while (!file.eof())
-       {
-           std::getline(file, buff);
-           if(!(buff==""))
-           {
-               if (!(buff=="-"))
-               {
-                   std::string power_in;
-                   std::string intensity_in;
-                   std::string red_in;
-                   std::string green_in;
-                   std::string blue_in;
+    if (file.is_open())
+    {
+        while (!file.eof())
+        {
+            std::getline(file, buff);
+            if(!(buff==""))
+            {
+                if (!(buff=="-"))
+                {
+                    std::string power_in;
+                    std::string intensity_in;
+                    std::string red_in;
+                    std::string green_in;
+                    std::string blue_in;
 
-                   int space = 0;
-                   for (int a = 0; a < buff.length(); ++a)
-                   {
-                       if(buff[a]=='(' || buff[a]==')')
-                           continue;
+                    int space = 0;
+                    for (int a = 0; a < buff.length(); ++a)
+                    {
+                        if(buff[a]=='(' || buff[a]==')')
+                            continue;
 
-                       if (!(buff[a] == ' '))
-                       {
-                           switch(space)
-                           {
-                               case 0:
-                                   power_in += buff[a];
-                                   break;
-                               case 1:
-                                   intensity_in += buff[a];
-                                   break;
-                               case 2:
-                                   red_in+=buff[a];
-                                   break;
-                               case 3:
-                                   green_in +=buff[a];
-                                   break;
-                               case 4:
-                                   blue_in += buff[a];
-                                   break;
-                           }
-                       }
-                       else
-                           space += 1;
-                   }
+                        if (!(buff[a] == ' '))
+                        {
+                            switch(space)
+                            {
+                                case 0:
+                                    power_in += buff[a];
+                                    break;
+                                case 1:
+                                    intensity_in += buff[a];
+                                    break;
+                                case 2:
+                                    red_in+=buff[a];
+                                    break;
+                                case 3:
+                                    green_in +=buff[a];
+                                    break;
+                                case 4:
+                                    blue_in += buff[a];
+                                    break;
+                            }
+                        }
+                        else
+                            space += 1;
+                    }
 
-                   matrix[i].resize(j+1);
-                   if(space==1)
-                   {
-                       matrix[i][j] = new Lamp(std::stof(power_in),std::stof(intensity_in));
-                   }
-                   else if(space==4){
-                       matrix[i][j] = new Led(std::stof(power_in),
-                                              std::stof(intensity_in),
-                                              std::stof(red_in),
-                                              std::stof(green_in),
-                                              std::stof(blue_in));
-                   }
+                    matrix[i].resize(j+1);
+                    if(space==1)
+                    {
+                        matrix[i][j] = new Lamp(std::stof(power_in),std::stof(intensity_in));
+                    }
+                    else if(space==4){
+                        matrix[i][j] = new Led(std::stof(power_in),
+                                               std::stof(intensity_in),
+                                               std::stof(red_in),
+                                               std::stof(green_in),
+                                               std::stof(blue_in));
+                    }
                    else{
-                       throw 3;
-                   }
-                   ++j;
-               }
-               else
-               {
-                   ++i;
-                   matrix.resize(i+1);
-                   j=0;
-               }
-           }
-       }
-   }
-   file.close();
-   int jmax = matrix[0].size();
-   for(int k=0 ; k<matrix.size();k++){
-       if(matrix[k].size()!= jmax)
-           throw 3;
-   }
+                        throw 3;
+                    }
+                    ++j;
+                }
+                else
+                {
+                    ++i;
+                    matrix.resize(i+1);
+                    j=0;
+                }
+            }
+        }
+    }
+    file.close();
+    int jmax = matrix[0].size();
+    for(int k=0 ; k<matrix.size();k++){
+        if(matrix[k].size()!= jmax)
+            throw 3;
+    }
 }
 
 Matrix::~Matrix()
@@ -238,7 +238,7 @@ void Matrix::writeFile(const std::string &fileName) const
 
 double Matrix::checkLightLevel(float x, float y, float z, float height) const
 {
-    /* Метод позволяющий рассчитать освещенность произвольной точуи помещения
+    /* Метод позволяющий рассчитать освещенность произвольной точки помещения
      * Входные параметры: x,y,z(координаты точки) , высота помещения
      */
     if (z < height && z>=0 && x>=0 && x <= matrix.size()+1
@@ -270,6 +270,8 @@ double Matrix::checkLightLevel(float x, float y, float z, float height) const
 }
 
 double Matrix::calcResultPower() const{
+    /* Метод позволяющий рассчитать затраты мощности
+     */
     double result = 0;
     for (int i = 0; i < matrix.size(); i++)
     {
