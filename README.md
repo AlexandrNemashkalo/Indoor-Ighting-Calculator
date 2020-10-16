@@ -14,14 +14,14 @@
 
 2.Рабочее окно
 
-![second](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/workWindow.jpg)
+![second](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/workWindow.png)
 
 3. Вывод результата подсчета освещенности в определенной точке
 
-![item](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/workWindow2.jpg)
+![item](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/workWindow2.png)
 
 4. Пример вывода ошибки при неправильно веденных данных
 
-![basket](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/error.jpg)
+![basket](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/error.png)
 
 
