@@ -8,7 +8,7 @@
 3. Светодиодная лампа: мощность, максимальная сила света, интенсивность красного, зелёного и синего светодиода, метод расчёта текущей силы света пропорциональной  интенсивности красного, зелёного и синего светодиода)
 
 ## Screenshots
-1. Main page
+1. Начальное окно
 
 ![main page](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/master/screens/main.jpg)
 
