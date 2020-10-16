@@ -40,7 +40,7 @@ Led::~Led()
 
 float Led::currIntensity(const Led & led) const
 {
-    float currI = led.intensity * (led.red + led.green + led.blue)/765;
+    float currI = led.intensity * (led.red + led.green + led.blue)/(3*Led::MAX_COLOR_VALUE);
     return currI;
 }
 

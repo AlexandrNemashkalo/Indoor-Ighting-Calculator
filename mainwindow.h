@@ -18,8 +18,6 @@ public:
 
 private slots:
     void on_CreateMatrixButton_clicked();
-
-
     void on_pushButton_clicked();
 
 private:

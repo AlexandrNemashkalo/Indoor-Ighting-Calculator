@@ -33,9 +33,8 @@ int main(int argc, char *argv[])
             break;
         }
     }
-
-
     startTests();
+
     return a.exec();
 
     //return 0;

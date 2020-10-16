@@ -3,7 +3,6 @@
 
 #include <QRadioButton>
 
-
 class QDynamicButton : public QRadioButton
 {
     Q_OBJECT

@@ -14,9 +14,8 @@ class WorkWindow : public QDialog
     Q_OBJECT
 
 public:
-    Matrix *matrix = nullptr; //= Matrix(1,2);
+    Matrix *matrix = nullptr;
     explicit WorkWindow(QWidget *parent = nullptr,Matrix *matrix = nullptr);
-//    void setCurrButton(QDynamicButton * btn);
     ~WorkWindow();
 
 private slots:
@@ -25,13 +24,13 @@ private slots:
     void on_IsLed_clicked(bool checked);
     void on_WriteFileBtn_clicked();
     void on_CheckLightLevel_clicked();
-
     void on_CalcResultPowerBtn_clicked();
 
 private:
     QDynamicButton * currButton = nullptr;
     Ui::WorkWindow *ui;
-    void UpdateLampInfo(int m,int n);
+    void updateLampInfo(int m,int n);
+    QString getStyleStringForButton(LampType type);
 
 };
 

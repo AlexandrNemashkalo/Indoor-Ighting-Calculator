@@ -37,6 +37,26 @@ Matrix::Matrix(const Matrix &M)
 
 Matrix::Matrix(const std::string & fileName)
 {
+    /* Метод, который считывает данные из текстового файла
+        * Данные файла должны содержатся в следующем ввиде
+        * M[0][0].P  M[0][0].I (M[0][0].Red M[0][0].Green M[0][0].Blue)
+        * M[0][1].P  M[0][1].I
+        * ...
+        * M[0][m-1].P  M[0][m-1].I
+        * (пустая строка)
+        * M[1][0].P  M[1][0].I
+        * ...
+        * M[1][m-1].P  M[1][m-1].I
+        * (пустая cтрока)
+        * ...
+        * M[n-1][0].P  M[n-1][0].I
+        * ...
+        * M[n-1][m-1].P  M[n-1][m-1].I
+        *
+        * где n и m размерность матрицы, P - мощность, I - интенсивность света,
+        * если есть скобочки со значениями значит это светодиодная лампа, если нет - обычная
+        * Входные параметры:  абсолютный путь к файлу
+        */
    std::ifstream file(fileName);
    std::string buff;
    int i = 0;
@@ -115,13 +135,12 @@ Matrix::Matrix(const std::string & fileName)
            }
        }
    }
+   file.close();
    int jmax = matrix[0].size();
    for(int k=0 ; k<matrix.size();k++){
        if(matrix[k].size()!= jmax)
            throw 3;
    }
-
-   file.close();
 }
 
 Matrix::~Matrix()
@@ -155,21 +174,10 @@ void Matrix::setLamp(int n,int m,Lamp *l)
             m >= 0 && m <= matrix[0].size())
     {
         matrix[n][m] = l;
-
-      //Lamp *LAMPA = dynamic_cast<Lamp*>(l);
-      // std::cout <<LAMPA->getType()<< "!!****"<<std::endl;
-     // std::cout <<(*(lamps +n_) +m_)->getType()<< "!!"<<std::endl;
-        //Lamp & tmp = *(*(matrix +n_) +m_);
-       // tmp = l;
-
-     // std::cout <<(*(lamps +n_) +m_)->getType()<< "!!!////"<<std::endl;
-
-
-      //потеря памяти
     }
 }
 
-Lamp* Matrix::getForUpdateLamp(int n_,int m_)
+Lamp* Matrix::getForUpdateLamp(int n_,int m_) const
 {
     /* Метод, возвращающий элемент матрицы по индексу
      * Входные параметры: индекс элемента (строка,столбец)

@@ -11,19 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-//QMessageBox ::information(this,"Заголовок","текст")
-//QMessageBox ::critical(this,"Заголовок","текст")
-//QMessageBox ::warning(this,"Заголовок","текст")
-//QMessageBox::StandardButton reply= QMessageBox ::question(this,"Заголовок","текст", QMessageBox::Yes|QMessageBox::NO)
 
 
 void MainWindow::on_CreateMatrixButton_clicked()
