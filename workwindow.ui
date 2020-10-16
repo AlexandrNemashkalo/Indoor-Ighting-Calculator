@@ -339,7 +339,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Рассчетать освещенность</string>
+    <string>Рассчитать освещенность</string>
    </property>
    <widget class="QPushButton" name="CheckLightLevel">
     <property name="geometry">
