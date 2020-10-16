@@ -12,6 +12,9 @@ WorkWindow::WorkWindow(QWidget *parent,Matrix  *m) :
     QDialog(parent),
     ui(new Ui::WorkWindow),
     matrix(m)
+    /* Конструктор инициализации 
+     * Входные параметры: указатель на родительский виджет, указатель матрицу
+     */
 {
     ui->setupUi(this);
 
@@ -56,18 +59,24 @@ WorkWindow::WorkWindow(QWidget *parent,Matrix  *m) :
 
 WorkWindow::~WorkWindow()
 {
+    /* Деструктор
+     */
     delete currButton;
     delete ui;
 }
 
 void WorkWindow::slotGetLamp()
 {
+    /* Метод, который вызывается при нажатии на радиокнопку с лампой
+     */
     currButton =(QDynamicButton*) sender();
     updateLampInfo(currButton->getN(),currButton->getM());
 }
 
 void WorkWindow::on_SaveLampButton_clicked()
 {
+    /* Метод который редактирует значение определенного источника света
+     */
     bool isLed = ui->IsLed->isChecked();
     if(isLed)
     {
@@ -98,6 +107,8 @@ void WorkWindow::on_SaveLampButton_clicked()
 
 
 void WorkWindow::updateLampInfo(int n_,int m_){
+    /* Метод, который устанавливает значения в редакторе лампы
+     */
     ui->LampInfo->setTitle("Информация о лампе c координатами("+
                            QString::number(n_+1)+","+
                            QString::number(m_+1)+",?)");
@@ -132,6 +143,9 @@ void WorkWindow::updateLampInfo(int n_,int m_){
 }
 
 QString WorkWindow::getStyleStringForButton(LampType type)
+    /* Метод  возвращает строку с стилями для кнопки
+     * Входные параметры: тип источника света
+     */
 {
     if(type ==led){
         return "QRadioButton::indicator {width: 50px;height: 50px;}"
@@ -149,6 +163,9 @@ QString WorkWindow::getStyleStringForButton(LampType type)
 
 void WorkWindow::on_IsLed_clicked(bool checked)
 {
+    /* Метод, который устанавлиет Enable
+     * Входные параметры: bool
+     */
     ui->BlueInput->setEnabled(checked);
     ui->RedInput->setEnabled(checked);
     ui->GreenInput->setEnabled(checked);
@@ -158,6 +175,9 @@ void WorkWindow::on_IsLed_clicked(bool checked)
 
 void WorkWindow::on_WriteFileBtn_clicked()
 {
+    /* Метод, который отрывает окно с выбором файла 
+     * и вызывает функцию для записи матрицы в файл
+     */
     QString fileName = QFileDialog::getOpenFileName(this,
                                 QString::fromUtf8("Открыть файл"),
                                 QDir::currentPath(),
@@ -172,6 +192,9 @@ if(!(fileName =="")){
 
 void WorkWindow::on_CheckLightLevel_clicked()
 {
+    /* Метод, который вызывает функцию по подсчету уровня освещенности
+     * и выводит значение в модальном окне
+     */
     try{
         double result = matrix->checkLightLevel(ui->XInput->value(),
                                 ui->YInput->value(),
@@ -188,5 +211,8 @@ void WorkWindow::on_CheckLightLevel_clicked()
 
 void WorkWindow::on_CalcResultPowerBtn_clicked()
 {
+    /* Метод, который выводит в мадальном окне
+     * результат подсчета результирующей мощности
+     */
       QMessageBox ::information(this,"Результат","Затраты мощности = "+ QString::number(matrix->calcResultPower())+" Вт");
 }
