@@ -1,4 +1,4 @@
-# Indoor-Lighting-Calculator
+# Indoor-lighting-calculator
 
 ## Задание
 
