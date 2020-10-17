@@ -10,7 +10,7 @@
 ## Screenshots
 1. Начальное окно
 
-![main page](https://github.com/AlexandrNemashkalo/Indoor-Ighting-Calculator/blob/main/screens/main.jpg)
+![main page](https://github.com/AlexandrNemashkalo/Indoor-lighting-calculator/blob/main/screens/main.jpg)
 
 2.Рабочее окно
 
